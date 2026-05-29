@@ -12,7 +12,7 @@ export const useExam = () => {
 
   const fetchCategories = useCallback(() => dispatch(fetchCategoriesThunk()), [dispatch]);
   const fetchExams = useCallback((slug: string) => dispatch(fetchCategoryExams(slug)), [dispatch]);
-  const selectExam = useCallback((slug: string, classFilter?: string) => dispatch(fetchExamDetail({ slug, class: classFilter })), [dispatch]);
+  const selectExam = useCallback((slug: string, classFilter?: string, subCategory?: string) => dispatch(fetchExamDetail({ slug, class: classFilter, subCategory })), [dispatch]);
   const refresh = useCallback(() => dispatch(fetchCategoriesThunk()), [dispatch]);
 
   return { exams, categories, currentExam, sections, loading, error, fetchExams, fetchCategories, selectExam, refresh };

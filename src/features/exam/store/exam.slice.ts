@@ -37,10 +37,10 @@ export const fetchCategoryExams = createAsyncThunk<any[], string, { rejectValue:
   }
 );
 
-export const fetchExamDetail = createAsyncThunk<any, { slug: string; class?: string }, { rejectValue: string }>(
+export const fetchExamDetail = createAsyncThunk<any, { slug: string; class?: string; subCategory?: string }, { rejectValue: string }>(
   'exam/fetchExamDetail',
-  async ({ slug, class: className }, { rejectWithValue }) => {
-    try { return await getExamDetailApi(slug, className); }
+  async ({ slug, class: className, subCategory }, { rejectWithValue }) => {
+    try { return await getExamDetailApi(slug, className, subCategory); }
     catch (error: any) { return rejectWithValue(error.response?.data?.message || 'Failed to fetch exam detail'); }
   }
 );

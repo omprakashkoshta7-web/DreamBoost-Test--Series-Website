@@ -28,9 +28,9 @@ const ExamLandingPage: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(() => Date.now());
 
   useEffect(() => {
-    if (examSlug) selectExam(examSlug, selectedClass || undefined);
+    if (examSlug) selectExam(examSlug, selectedClass || undefined, selectedSubCategory || undefined);
     dispatch(fetchCompletedCategories());
-  }, [selectExam, examSlug, selectedClass, dispatch]);
+  }, [selectExam, examSlug, selectedClass, selectedSubCategory, dispatch]);
 
   useEffect(() => {
     fetchMyEnrollments().then(setEnrolledIds).catch(() => {});
@@ -68,9 +68,15 @@ const ExamLandingPage: React.FC = () => {
   const filteredTests = useMemo(() => {
     if (!currentExam) return [];
     const tests = currentExam.tests || [];
-    if (!selectedClass) return tests;
-    return tests.filter((t: any) => !t.class || t.class === 'all' || t.class === selectedClass);
-  }, [currentExam, selectedClass]);
+    let result = tests;
+    if (selectedClass) {
+      result = result.filter((t: any) => !t.class || t.class === 'all' || t.class === selectedClass);
+    }
+    if (selectedSubCategory) {
+      result = result.filter((t: any) => !t.subCategory || t.subCategory === selectedSubCategory);
+    }
+    return result;
+  }, [currentExam, selectedClass, selectedSubCategory]);
 
   if (loading || !currentExam) {
     return <div className="flex items-center justify-center min-h-[60vh]"><Loader size="lg" label="Loading exam details..." /></div>;

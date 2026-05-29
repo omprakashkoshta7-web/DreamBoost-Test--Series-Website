@@ -10,8 +10,10 @@ export const getCategoryExams = async (slug: string) => {
   return response.data.data;
 };
 
-export const getExamDetail = async (slug: string, classFilter?: string) => {
-  const params = classFilter ? { class: classFilter } : {};
+export const getExamDetail = async (slug: string, classFilter?: string, subCategory?: string) => {
+  const params: Record<string, string> = {};
+  if (classFilter) params.class = classFilter;
+  if (subCategory) params.subCategory = subCategory;
   const response = await apiClient.get(`/exam/exams/${slug}`, { params });
   return response.data.data;
 };
