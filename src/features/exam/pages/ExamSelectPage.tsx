@@ -75,6 +75,24 @@ const GroupedExamsSection: React.FC<{ exams: any[]; onExamClick: (exam: any) => 
     return { groups, unassigned };
   }, [exams]);
 
+  const ExamListItem: React.FC<{ exam: any }> = ({ exam }) => (
+    <div
+      onClick={() => onExamClick(exam)}
+      className="group flex items-start gap-4 p-4 rounded-xl border border-tb-gray-100 hover:border-tb-blue/40 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 cursor-pointer bg-white"
+    >
+      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white flex-shrink-0 mt-0.5">
+        <BookOpen className="w-5 h-5" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-tb-navy group-hover:text-tb-blue transition-colors">{exam.name}</h3>
+        {exam.description && (
+          <p className="text-sm text-tb-gray-500 mt-1 leading-relaxed">{exam.description}</p>
+        )}
+      </div>
+      <ChevronRight className="w-4 h-4 text-tb-gray-300 group-hover:text-tb-blue group-hover:translate-x-0.5 transition-all flex-shrink-0 mt-2" />
+    </div>
+  );
+
   return (
     <div className="space-y-8">
       {grouped.groups.map((group) => {
@@ -82,9 +100,9 @@ const GroupedExamsSection: React.FC<{ exams: any[]; onExamClick: (exam: any) => 
         return (
           <div key={group.title}>
             <SectionHeader title={group.title} subtitle={group.subtitle} icon={group.icon} count={group.items.length} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-3">
               {group.items.map((exam: any) => (
-                <ExamCard key={exam._id || exam.slug} exam={exam} iconMap={iconMap} onClick={() => onExamClick(exam)} />
+                <ExamListItem key={exam._id || exam.slug} exam={exam} />
               ))}
             </div>
           </div>
@@ -95,9 +113,9 @@ const GroupedExamsSection: React.FC<{ exams: any[]; onExamClick: (exam: any) => 
           {grouped.groups.some((g) => g.items.length > 0) && (
             <SectionHeader title="Other Exams" subtitle="Additional exams in this category" icon="BookOpen" count={grouped.unassigned.length} />
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="space-y-3">
             {grouped.unassigned.map((exam: any) => (
-              <ExamCard key={exam._id || exam.slug} exam={exam} iconMap={iconMap} onClick={() => onExamClick(exam)} />
+              <ExamListItem key={exam._id || exam.slug} exam={exam} />
             ))}
           </div>
         </div>
