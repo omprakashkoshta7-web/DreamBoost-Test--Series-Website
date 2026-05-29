@@ -1,0 +1,9 @@
+export { LandingHeroSection } from './LandingHeroSection';
+export { ExamCategoriesSection } from './ExamCategoriesSection';
+export { PopularTestsSection } from './PopularTestsSection';
+export { FeaturesSection } from './FeaturesSection';
+export { HowItWorksSection } from './HowItWorksSection';
+export { PricingSection } from './PricingSection';
+export { TestimonialsSection } from './TestimonialsSection';
+export { LandingCtaSection } from './LandingCtaSection';
+export { LandingFooter } from './LandingFooter';
