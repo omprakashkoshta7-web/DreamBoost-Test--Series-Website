@@ -6,6 +6,7 @@ interface ExamState {
   categoryExams: any[];
   currentCategory: any | null;
   currentExam: any | null;
+  sections: any[];
   loading: boolean;
   error: string | null;
 }
@@ -15,6 +16,7 @@ const initialState: ExamState = {
   categoryExams: [],
   currentCategory: null,
   currentExam: null,
+  sections: [],
   loading: false,
   error: null,
 };
@@ -62,8 +64,10 @@ const examSlice = createSlice({
         if (payload && typeof payload === 'object' && payload.exams) {
           state.categoryExams = payload.exams;
           state.currentCategory = payload.category || null;
+          state.sections = payload.sections || [];
         } else {
           state.categoryExams = payload || [];
+          state.sections = [];
         }
       })
       .addCase(fetchCategoryExams.rejected, (state, action) => { state.loading = false; state.error = action.payload as string; })

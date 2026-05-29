@@ -8,12 +8,12 @@ import {
 
 export const useExam = () => {
   const dispatch = useAppDispatch();
-  const { categories, categoryExams: exams, currentExam, loading, error } = useAppSelector((state) => (state as any).exam);
+  const { categories, categoryExams: exams, currentExam, sections, loading, error } = useAppSelector((state) => (state as any).exam);
 
   const fetchCategories = useCallback(() => dispatch(fetchCategoriesThunk()), [dispatch]);
   const fetchExams = useCallback((slug: string) => dispatch(fetchCategoryExams(slug)), [dispatch]);
   const selectExam = useCallback((slug: string, classFilter?: string) => dispatch(fetchExamDetail({ slug, class: classFilter })), [dispatch]);
   const refresh = useCallback(() => dispatch(fetchCategoriesThunk()), [dispatch]);
 
-  return { exams, categories, currentExam, loading, error, fetchExams, fetchCategories, selectExam, refresh };
+  return { exams, categories, currentExam, sections, loading, error, fetchExams, fetchCategories, selectExam, refresh };
 };

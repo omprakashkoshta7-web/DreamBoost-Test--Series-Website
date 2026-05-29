@@ -3,13 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useExam } from '../hooks';
 import { Loader } from '@shared/components';
 import {
-  ArrowLeft, BookOpen, Layers, Zap, Target, ChevronRight,
+  ArrowLeft, BookOpen, Layers, Zap, Target,
   Atom, Calculator, Stethoscope, Landmark, Building2, GraduationCap,
   BriefcaseBusiness, Rocket, Shield, TrainFront, Trophy, FileText, Sparkles,
 } from '@shared/icons';
 import ExamCard from '@features/exam/components/ExamCard';
 import ExamSelectHeader from '@features/exam/components/ExamSelectHeader';
-import DifficultyBadge from '@features/exam/components/DifficultyBadge';
 import ExamEmptyState from '@features/exam/components/ExamEmptyState';
 import ClassSelectionModal from '@features/exam/components/ClassSelectionModal';
 
@@ -19,44 +18,40 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   Shield, TrainFront, Trophy, FileText, Sparkles,
 };
 
-const groupConfig: Record<string, { title: string; subtitle: string; icon: string }> = {
-  national: { title: 'National Level Exams', subtitle: 'Exams conducted at the national level for engineering admissions', icon: 'Trophy' },
-  state: { title: 'State-Level Engineering Exams', subtitle: 'Exams conducted by individual state governments for engineering admissions', icon: 'Building2' },
-};
-
-const GroupedExamsSection: React.FC<{ exams: any[]; onExamClick: (exam: any) => void }> = ({ exams, onExamClick }) => {
+const GroupedExamsSection: React.FC<{ exams: any[]; sections: any[]; onExamClick: (exam: any) => void }> = ({ exams, sections, onExamClick }) => {
   const grouped = useMemo(() => {
-    const groups: Record<string, any[]> = { national: [], state: [] };
+    const sectionMap: Record<string, any[]> = {};
     const unassigned: any[] = [];
     exams.forEach((e) => {
-      if (e.group === 'national') groups.national.push(e);
-      else if (e.group === 'state') groups.state.push(e);
-      else unassigned.push(e);
+      const sid = e.sectionId;
+      if (sid && typeof sid === 'string') {
+        if (!sectionMap[sid]) sectionMap[sid] = [];
+        sectionMap[sid].push(e);
+      } else {
+        unassigned.push(e);
+      }
     });
-    return { ...groups, unassigned };
+    return { sectionMap, unassigned };
   }, [exams]);
 
-  const gradientMap: Record<string, string> = {
-    Trophy: 'from-blue-600 to-blue-700',
-    Building2: 'from-emerald-600 to-emerald-700',
-  };
+  const gradientList = ['from-blue-600 to-blue-700', 'from-emerald-600 to-emerald-700', 'from-purple-600 to-purple-700', 'from-amber-600 to-amber-700', 'from-rose-600 to-rose-700', 'from-cyan-600 to-cyan-700'];
 
   return (
     <div className="max-w-5xl mx-auto space-y-12">
-      {(['national', 'state'] as const).map((key) => {
-        const items = grouped[key];
-        if (items.length === 0) return null;
-        const config = groupConfig[key];
-        const IconComp = iconMap[config.icon] || GraduationCap;
+      {sections.map((section, idx) => {
+        const items = grouped.sectionMap[section._id];
+        if (!items || items.length === 0) return null;
+        const IconComp = iconMap[section.icon] || GraduationCap;
+        const gradient = gradientList[idx % gradientList.length];
         return (
-          <div key={key} className="text-center">
+          <div key={section._id} className="text-center">
             <div className="inline-flex items-center gap-3 mb-2">
-              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradientMap[config.icon] || 'from-blue-600 to-blue-700'} flex items-center justify-center text-white shadow-sm`}>
+              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center text-white shadow-sm`}>
                 <IconComp className="w-5 h-5" />
               </div>
-              <h2 className="text-2xl font-extrabold text-tb-navy">{config.title}</h2>
+              <h2 className="text-2xl font-extrabold text-tb-navy">{section.title}</h2>
             </div>
-            <p className="text-sm text-tb-gray-500 mb-8">{config.subtitle}</p>
+            <p className="text-sm text-tb-gray-500 mb-8">{section.subtitle}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {items.map((exam: any) => (
                 <ExamCard key={exam._id || exam.slug} exam={exam} iconMap={iconMap} onClick={() => onExamClick(exam)} />
@@ -83,7 +78,7 @@ const GroupedExamsSection: React.FC<{ exams: any[]; onExamClick: (exam: any) => 
 const ExamSelectPage: React.FC = () => {
   const { categorySlug } = useParams<{ categorySlug: string }>();
   const navigate = useNavigate();
-  const { exams: categoryExams, categories, loading, fetchExams } = useExam();
+  const { exams: categoryExams, categories, sections, loading, fetchExams } = useExam();
   const [selectedExam, setSelectedExam] = useState<any | null>(null);
 
   const category = categories.find((c: any) => c.slug === categorySlug);
@@ -115,7 +110,7 @@ const ExamSelectPage: React.FC = () => {
       {categoryExams.length === 0 ? (
         <ExamEmptyState categoryName={category?.name || ''} />
       ) : categorySlug === 'engineering' ? (
-        <GroupedExamsSection exams={categoryExams} onExamClick={(exam) => setSelectedExam(exam)} />
+        <GroupedExamsSection exams={categoryExams} sections={sections} onExamClick={(exam) => setSelectedExam(exam)} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categoryExams.map((exam: any) => (
