@@ -24,8 +24,8 @@ const GroupedExamsSection: React.FC<{ exams: any[]; sections: any[]; onExamClick
     const sectionMap: Record<string, any[]> = {};
     const unassigned: any[] = [];
     exams.forEach((e) => {
-      const sid = e.sectionId;
-      if (sid && typeof sid === 'string') {
+      const sid = typeof e.sectionId === 'object' ? e.sectionId?._id : e.sectionId;
+      if (sid) {
         if (!sectionMap[sid]) sectionMap[sid] = [];
         sectionMap[sid].push(e);
       } else {
