@@ -122,7 +122,7 @@ const ExamSelectPage: React.FC = () => {
           <ArrowLeft className="w-4 h-4" /> Back to Categories
         </button>
       ) : (
-        <ExamSelectHeader name={category?.name || 'Exam Category'} description={category?.description} onBack={() => navigate('/app/exam-categories')} />
+        <ExamSelectHeader name={category?.name || ''} description={category?.description} onBack={() => navigate('/app/exam-categories')} />
       )}
 
       {categoryExams.length === 0 ? (
