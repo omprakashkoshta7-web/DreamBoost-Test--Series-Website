@@ -25,7 +25,8 @@ const LazyMyLibrary = lazy(() => import('@features/study-material/pages/MyLibrar
 const LazyStudyProgress = lazy(() => import('@features/study-material/pages/StudyProgressPage'));
 const LazyExamCategory = lazy(() => import('@features/exam/pages/ExamCategoryPage'));
 const LazyExamSelect = lazy(() => import('@features/exam/pages/ExamSelectPage'));
-const LazyExamLanding = lazy(() => import('@features/exam/pages/ExamLandingPage'));
+const LazyTestTypeSelect = lazy(() => import('@features/exam/pages/TestTypeSelectPage'));
+const LazyTestList = lazy(() => import('@features/exam/pages/TestListPage'));
 
 export const router = createBrowserRouter([
   { path: '/', element: <LandingPage /> },
@@ -47,7 +48,8 @@ export const router = createBrowserRouter([
       },
       { path: '/app/exam-categories', element: <ProtectedRoute><LazyExamCategory /></ProtectedRoute> },
       { path: '/app/exam-categories/:categorySlug', element: <ProtectedRoute><LazyExamSelect /></ProtectedRoute> },
-      { path: '/app/exam-landing/:examSlug', element: <ProtectedRoute><LazyExamLanding /></ProtectedRoute> },
+      { path: '/app/exam-landing/:examSlug', element: <ProtectedRoute><LazyTestTypeSelect /></ProtectedRoute> },
+      { path: '/app/exam-landing/:examSlug/:testType', element: <ProtectedRoute><LazyTestList /></ProtectedRoute> },
       { path: '/app/dashboard', element: <ProtectedRoute><LazyDashboard /></ProtectedRoute> },
       { path: '/app/my-tests', element: <ProtectedRoute><LazyMyTests /></ProtectedRoute> },
       { path: '/app/test-series', element: <ProtectedRoute><LazyTestSeries /></ProtectedRoute> },

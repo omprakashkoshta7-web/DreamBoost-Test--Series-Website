@@ -10,7 +10,6 @@ import {
 import ExamCard from '@features/exam/components/ExamCard';
 import ExamSelectHeader from '@features/exam/components/ExamSelectHeader';
 import ExamEmptyState from '@features/exam/components/ExamEmptyState';
-import ClassSelectionModal from '@features/exam/components/ClassSelectionModal';
 import SubCategorySelectionModal from '@features/exam/components/SubCategorySelectionModal';
 
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -89,24 +88,18 @@ const ExamSelectPage: React.FC = () => {
     if (categorySlug) fetchExams(categorySlug);
   }, [fetchExams, categorySlug]);
 
-  const handleClassSelect = (className: '11' | '12') => {
-    if (!selectedExam) return;
-    navigate(`/app/exam-landing/${selectedExam.slug}?class=${className}`);
-    setSelectedExam(null);
-  };
-
   const handleExamClick = (exam: any) => {
     if (exam.subCategories && exam.subCategories.length > 0) {
       setSelectedExam(exam);
       setSelectedSubCategory(exam);
     } else {
-      setSelectedExam(exam);
+      navigate(`/app/exam-landing/${exam.slug}`);
     }
   };
 
   const handleSubCategorySelect = (subCategory: string) => {
     if (!selectedSubCategory) return;
-    navigate(`/app/exam-landing/${selectedSubCategory.slug}?subCategory=${encodeURIComponent(subCategory)}`);
+    navigate(`/app/exam-landing/${selectedSubCategory.slug}`);
     setSelectedSubCategory(null);
     setSelectedExam(null);
   };
@@ -143,14 +136,6 @@ const ExamSelectPage: React.FC = () => {
           subCategories={selectedSubCategory.subCategories}
           onSelect={handleSubCategorySelect}
           onClose={() => { setSelectedSubCategory(null); setSelectedExam(null); }}
-        />
-      )}
-
-      {selectedExam && !selectedSubCategory && (
-        <ClassSelectionModal
-          examName={selectedExam.name}
-          onSelect={handleClassSelect}
-          onClose={() => setSelectedExam(null)}
         />
       )}
     </div>
