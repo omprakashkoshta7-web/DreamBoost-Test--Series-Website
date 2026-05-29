@@ -11,6 +11,7 @@ import ExamCard from '@features/exam/components/ExamCard';
 import ExamSelectHeader from '@features/exam/components/ExamSelectHeader';
 import ExamEmptyState from '@features/exam/components/ExamEmptyState';
 import ClassSelectionModal from '@features/exam/components/ClassSelectionModal';
+import SubCategorySelectionModal from '@features/exam/components/SubCategorySelectionModal';
 
 const iconMap: Record<string, React.ComponentType<any>> = {
   BookOpen, Layers, Target, Zap, Atom, Calculator, Stethoscope,
@@ -80,6 +81,7 @@ const ExamSelectPage: React.FC = () => {
   const navigate = useNavigate();
   const { exams: categoryExams, categories, sections, loading, fetchExams } = useExam();
   const [selectedExam, setSelectedExam] = useState<any | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<any | null>(null);
 
   const category = categories.find((c: any) => c.slug === categorySlug);
 
@@ -90,6 +92,22 @@ const ExamSelectPage: React.FC = () => {
   const handleClassSelect = (className: '11' | '12') => {
     if (!selectedExam) return;
     navigate(`/app/exam-landing/${selectedExam.slug}?class=${className}`);
+    setSelectedExam(null);
+  };
+
+  const handleExamClick = (exam: any) => {
+    if (exam.subCategories && exam.subCategories.length > 0) {
+      setSelectedExam(exam);
+      setSelectedSubCategory(exam);
+    } else {
+      setSelectedExam(exam);
+    }
+  };
+
+  const handleSubCategorySelect = (subCategory: string) => {
+    if (!selectedSubCategory) return;
+    navigate(`/app/exam-landing/${selectedSubCategory.slug}?subCategory=${encodeURIComponent(subCategory)}`);
+    setSelectedSubCategory(null);
     setSelectedExam(null);
   };
 
@@ -110,16 +128,25 @@ const ExamSelectPage: React.FC = () => {
       {categoryExams.length === 0 ? (
         <ExamEmptyState categoryName={category?.name || ''} />
       ) : categorySlug === 'engineering' ? (
-        <GroupedExamsSection exams={categoryExams} sections={sections} onExamClick={(exam) => setSelectedExam(exam)} />
+        <GroupedExamsSection exams={categoryExams} sections={sections} onExamClick={handleExamClick} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {categoryExams.map((exam: any) => (
-            <ExamCard key={exam._id || exam.slug} exam={exam} iconMap={iconMap} onClick={() => setSelectedExam(exam)} />
+            <ExamCard key={exam._id || exam.slug} exam={exam} iconMap={iconMap} onClick={() => handleExamClick(exam)} />
           ))}
         </div>
       )}
 
-      {selectedExam && (
+      {selectedSubCategory && (
+        <SubCategorySelectionModal
+          examName={selectedSubCategory.name}
+          subCategories={selectedSubCategory.subCategories}
+          onSelect={handleSubCategorySelect}
+          onClose={() => { setSelectedSubCategory(null); setSelectedExam(null); }}
+        />
+      )}
+
+      {selectedExam && !selectedSubCategory && (
         <ClassSelectionModal
           examName={selectedExam.name}
           onSelect={handleClassSelect}

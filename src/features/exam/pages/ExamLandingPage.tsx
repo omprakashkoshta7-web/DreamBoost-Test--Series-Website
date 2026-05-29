@@ -16,6 +16,7 @@ const ExamLandingPage: React.FC = () => {
   const { examSlug } = useParams<{ examSlug: string }>();
   const [searchParams] = useSearchParams();
   const selectedClass = searchParams.get('class') || '';
+  const selectedSubCategory = searchParams.get('subCategory') || '';
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -79,6 +80,13 @@ const ExamLandingPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <div className="flex items-center gap-2">
+        {selectedSubCategory && (
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+            {exam.name} - {selectedSubCategory}
+          </span>
+        )}
+      </div>
       <ExamLandingHeader name={exam.name} description={exam.description} onBack={() => navigate(-1)} />
 
       <div>
