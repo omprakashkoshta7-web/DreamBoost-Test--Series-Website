@@ -1,1 +1,0 @@
-export const HOME_FEATURE_LABEL = 'Home';

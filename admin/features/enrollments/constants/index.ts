@@ -1,1 +1,0 @@
-export const ENROLLMENTS_FEATURE_LABEL = 'Enrollments';

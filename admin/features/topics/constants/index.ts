@@ -1,1 +1,0 @@
-export const emptyForm = { name: '', slug: '', subjectId: '', description: '', order: 0, isActive: true };
