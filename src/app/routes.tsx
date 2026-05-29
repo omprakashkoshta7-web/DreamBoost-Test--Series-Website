@@ -5,7 +5,7 @@ import LandingPage from '@features/landing/pages/LandingPage';
 import ProtectedRoute from '@shared/components/ProtectedRoute';
 
 const LazyDashboard = lazy(() => import('@features/dashboard/pages/DashboardPage'));
-const LazyTestSeries = lazy(() => import('@features/test-series/pages/TestSeriesPage'));
+const LazyTestSeriesList = lazy(() => import('@features/test-series/pages/TestSeriesPage'));
 const LazyTestSeriesDetail = lazy(() => import('@features/test-series/pages/TestSeriesDetailPage'));
 const LazyMyTests = lazy(() => import('@features/test-series/pages/MyTestsPage'));
 const LazyTestInstructions = lazy(() => import('@features/test-exam/pages/TestInstructionsPage'));
@@ -25,7 +25,7 @@ const LazyMyLibrary = lazy(() => import('@features/study-material/pages/MyLibrar
 const LazyStudyProgress = lazy(() => import('@features/study-material/pages/StudyProgressPage'));
 const LazyExamCategory = lazy(() => import('@features/exam/pages/ExamCategoryPage'));
 const LazyExamSelect = lazy(() => import('@features/exam/pages/ExamSelectPage'));
-const LazyTestTypeSelect = lazy(() => import('@features/exam/pages/TestTypeSelectPage'));
+const LazyExamDetail = lazy(() => import('@features/exam/pages/TestSeriesPage'));
 const LazyTestList = lazy(() => import('@features/exam/pages/TestListPage'));
 
 export const router = createBrowserRouter([
@@ -48,11 +48,11 @@ export const router = createBrowserRouter([
       },
       { path: '/app/exam-categories', element: <ProtectedRoute><LazyExamCategory /></ProtectedRoute> },
       { path: '/app/exam-categories/:categorySlug', element: <ProtectedRoute><LazyExamSelect /></ProtectedRoute> },
-      { path: '/app/exam-landing/:examSlug', element: <ProtectedRoute><LazyTestTypeSelect /></ProtectedRoute> },
+      { path: '/app/exam-landing/:examSlug', element: <ProtectedRoute><LazyExamDetail /></ProtectedRoute> },
       { path: '/app/exam-landing/:examSlug/:testType', element: <ProtectedRoute><LazyTestList /></ProtectedRoute> },
       { path: '/app/dashboard', element: <ProtectedRoute><LazyDashboard /></ProtectedRoute> },
       { path: '/app/my-tests', element: <ProtectedRoute><LazyMyTests /></ProtectedRoute> },
-      { path: '/app/test-series', element: <ProtectedRoute><LazyTestSeries /></ProtectedRoute> },
+      { path: '/app/test-series', element: <ProtectedRoute><LazyTestSeriesList /></ProtectedRoute> },
       { path: '/app/series/:examSlug/:testId', element: <ProtectedRoute><LazyTestSeriesDetail /></ProtectedRoute> },
       { path: '/app/test-instructions/:testId', element: <ProtectedRoute><LazyTestInstructions /></ProtectedRoute> },
       { path: '/app/test-exam/:testId', element: <ProtectedRoute><LazyTestExam /></ProtectedRoute> },
