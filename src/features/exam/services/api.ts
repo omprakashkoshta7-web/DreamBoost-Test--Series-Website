@@ -10,8 +10,9 @@ export const getCategoryExams = async (slug: string) => {
   return response.data.data;
 };
 
-export const getExamDetail = async (slug: string) => {
-  const response = await apiClient.get(`/exam/exams/${slug}`);
+export const getExamDetail = async (slug: string, classFilter?: string) => {
+  const params = classFilter ? { class: classFilter } : {};
+  const response = await apiClient.get(`/exam/exams/${slug}`, { params });
   return response.data.data;
 };
 
