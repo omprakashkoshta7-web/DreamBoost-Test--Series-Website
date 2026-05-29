@@ -127,7 +127,7 @@ const ExamSelectPage: React.FC = () => {
 
       {categoryExams.length === 0 ? (
         <ExamEmptyState categoryName={category?.name || ''} />
-      ) : categorySlug === 'engineering' ? (
+      ) : sections && sections.length > 0 ? (
         <GroupedExamsSection exams={categoryExams} sections={sections} onExamClick={handleExamClick} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
