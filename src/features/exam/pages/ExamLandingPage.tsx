@@ -6,6 +6,7 @@ import { fetchCompletedCategories } from '@features/test-series/store/test.thunk
 import { selectCompletedCategories } from '@features/test-series/store/test.selectors';
 import { enrollTest, fetchMyEnrollments } from '@features/test-series/services/api';
 import { useToast } from '@shared/components/ToastProvider';
+import { FileText } from '@shared/icons';
 import { Loader } from '@shared/components';
 import TestCard from '@features/test-series/components/TestCard';
 import EnrollModal from '@features/test-series/components/EnrollModal';
@@ -84,16 +85,12 @@ const ExamLandingPage: React.FC = () => {
 
   const exam = currentExam;
 
+  const pageTitle = selectedSubCategory ? `${exam.name} - ${selectedSubCategory}` : exam.name;
+  const pageDesc = selectedSubCategory ? `${exam.name} ${selectedSubCategory} preparation` : exam.description;
+
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center gap-2">
-        {selectedSubCategory && (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-            {exam.name} - {selectedSubCategory}
-          </span>
-        )}
-      </div>
-      <ExamLandingHeader name={exam.name} description={exam.description} onBack={() => navigate(-1)} />
+      <ExamLandingHeader name={pageTitle} description={pageDesc} onBack={() => navigate(-1)} />
 
       <div>
         <div className="flex items-center justify-between mb-4">
@@ -119,20 +116,30 @@ const ExamLandingPage: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredTests.map((test: any) => (
-            <TestCard
-              key={test._id}
-              test={test}
-              completedCategories={completedCategories}
-              isEnrolled={enrolledIds.includes(test._id)}
-              currentTime={currentTime}
-              onEnroll={handleEnrollClick}
-              primaryLabel="Go to Series"
-              onPrimaryClick={handleGoToSeries}
-            />
-          ))}
-        </div>
+        {filteredTests.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredTests.map((test: any) => (
+              <TestCard
+                key={test._id}
+                test={test}
+                completedCategories={completedCategories}
+                isEnrolled={enrolledIds.includes(test._id)}
+                currentTime={currentTime}
+                onEnroll={handleEnrollClick}
+                primaryLabel="Go to Series"
+                onPrimaryClick={handleGoToSeries}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <FileText className="w-8 h-8 text-gray-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-1">No tests available</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Tests for {pageTitle} will be added soon.</p>
+          </div>
+        )}
       </div>
 
       {enrollingTest && (
