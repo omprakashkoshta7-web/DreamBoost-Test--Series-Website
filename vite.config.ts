@@ -15,7 +15,6 @@ export default defineConfig({
       '@features': `${__dirname}/src/features`,
       '@shared': `${__dirname}/src/shared`,
       '@store': `${__dirname}/src/store`,
-      '@admin': `${__dirname}/../admin`,
     },
   },
   server: {
