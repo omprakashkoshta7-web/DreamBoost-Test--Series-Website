@@ -81,7 +81,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/app/dashboard" className="-ml-2 flex-shrink-0">
-              <BrandLogo logoClassName="h-8 w-auto sm:h-10 md:h-12 lg:h-16 object-cover object-left" textClassName="hidden" />
+              <BrandLogo logoClassName="h-16 w-[18rem] object-cover object-left" textClassName="hidden" />
             </Link>
 
             {/* Desktop Nav Links */}

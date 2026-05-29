@@ -31,9 +31,8 @@
       "@features/*": ["src/features/*"],
       "@shared/*": ["src/shared/*"],
       "@store/*": ["src/store/*"],
-      "@admin/*": ["../admin/*"]
     }
   },
-  "include": ["src", "../admin"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
