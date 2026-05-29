@@ -1,1 +1,0 @@
-export { useExamCategories } from './useExamCategories';

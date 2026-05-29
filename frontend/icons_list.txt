@@ -1,1 +1,0 @@
-E:\p2\src\shared\icons\index.ts:1:export {

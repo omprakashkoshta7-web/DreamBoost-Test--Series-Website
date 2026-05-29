@@ -1,1 +1,0 @@
-export const MATERIALPURCHASES_FEATURE_LABEL = 'Material Purchases';

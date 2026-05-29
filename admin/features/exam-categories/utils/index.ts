@@ -1,1 +1,0 @@
-// Utility helpers for exam-categories feature (none extracted yet)
