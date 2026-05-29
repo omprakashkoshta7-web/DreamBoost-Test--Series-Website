@@ -37,21 +37,21 @@ const TestExamTopBar: React.FC<TestExamTopBarProps> = ({
         <button onClick={onExit} className="p-2 rounded-lg hover:bg-tb-gray-100"><ArrowLeft className="w-5 h-5 text-tb-gray-600" /></button>
         <div><h2 className="font-semibold text-tb-navy">{testName}</h2><p className="text-xs text-tb-gray-500">Q {currentQuestion + 1} of {totalQuestions}{currentSection ? ` \u2022 ${currentSection.name}` : ''}</p></div>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-end">
         <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 text-green-700 text-xs font-semibold">
           <CheckCircle className="w-3.5 h-3.5" />
           {savedLabel}
         </div>
         {!isFullscreen && (
-          <button onClick={onRequestFullscreen} className="p-2 rounded-lg hover:bg-tb-gray-100" title="Fullscreen">
+          <button onClick={onRequestFullscreen} className="p-2.5 rounded-lg hover:bg-tb-gray-100 min-w-[44px] min-h-[44px] flex items-center justify-center" title="Fullscreen">
             <Maximize className="w-4 h-4 text-tb-gray-600" />
           </button>
         )}
         <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg ${timeLeft < 300 ? 'bg-red-100' : 'bg-tb-gray-100'}`}>
           <Timer className={`w-4 h-4 ${timeColor}`} /><span className={`font-mono font-bold text-sm ${timeColor}`}>{formatTime(timeLeft)}</span>
         </div>
-        <button onClick={onTogglePause} className="p-2 rounded-lg hover:bg-tb-gray-100">{isPaused ? <Eye className="w-5 h-5 text-tb-gray-600" /> : <Clock className="w-5 h-5 text-tb-gray-600" />}</button>
-        <Button variant="primary" size="sm" onClick={onSubmit}><Send className="w-4 h-4" />Submit</Button>
+        <button onClick={onTogglePause} className="p-2.5 rounded-lg hover:bg-tb-gray-100 min-w-[44px] min-h-[44px] flex items-center justify-center">{isPaused ? <Eye className="w-5 h-5 text-tb-gray-600" /> : <Clock className="w-5 h-5 text-tb-gray-600" />}</button>
+        <Button variant="primary" size="sm" onClick={onSubmit} className="min-h-[44px]"><Send className="w-4 h-4" /><span className="hidden sm:inline">Submit</span></Button>
       </div>
     </div>
 

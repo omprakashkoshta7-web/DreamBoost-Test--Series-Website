@@ -24,7 +24,7 @@ const AnalyticsSnapshot: React.FC<AnalyticsSnapshotProps> = ({ totalTimeSpent, a
 
   return (
     <Card title="Analytics Snapshot">
-      <div className="grid grid-cols-3 gap-3 mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
         {items.map((item, i) => {
           const Icon = item.icon;
           return (

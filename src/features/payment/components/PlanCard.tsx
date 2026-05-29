@@ -18,7 +18,7 @@ interface PlanCardProps {
 
 const PlanCard: React.FC<PlanCardProps> = ({ plan, onSelect }) => {
   return (
-    <div className={`card min-h-[490px] p-8 text-center relative flex flex-col ${plan.isPopular ? 'shadow-tb-lg scale-[1.03]' : 'shadow-tb-md'}`}>
+    <div className={`card min-h-[400px] sm:min-h-[490px] p-4 sm:p-8 text-center relative flex flex-col ${plan.isPopular ? 'shadow-tb-lg scale-[1.03]' : 'shadow-tb-md'}`}>
       {plan.isPopular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-tb-orange text-white text-xs font-bold rounded-full shadow-lg">Most Popular</span>}
       <div className="flex items-center gap-4 justify-center mb-4">
         <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${plan.isPopular ? 'bg-tb-orange' : 'bg-tb-blue-light'}`}>

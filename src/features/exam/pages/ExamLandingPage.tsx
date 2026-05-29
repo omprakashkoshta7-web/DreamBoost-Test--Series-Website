@@ -115,7 +115,7 @@ const ExamLandingPage: React.FC = () => {
                     <button
                       key={c}
                       onClick={() => navigate(`/app/exam-landing/${examSlug}?class=${c}`, { replace: true })}
-                      className={`px-3 py-1 text-sm font-medium transition-colors ${
+                      className={`px-3 py-2.5 text-sm font-medium transition-colors min-h-[44px] ${
                         selectedClass === c
                           ? 'bg-blue-600 text-white'
                           : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -134,7 +134,7 @@ const ExamLandingPage: React.FC = () => {
                   <button
                     key={tab.key}
                     onClick={() => setSelectedTestType(tab.key)}
-                    className={`px-3 py-1 text-sm font-medium transition-colors ${
+                    className={`px-3 py-2.5 text-sm font-medium transition-colors min-h-[44px] ${
                       selectedTestType === tab.key
                         ? 'bg-blue-600 text-white'
                         : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'

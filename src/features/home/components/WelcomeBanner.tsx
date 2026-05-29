@@ -17,7 +17,7 @@ export const WelcomeBanner = ({ homeData }: { homeData: any }) => (
             <p className="text-blue-200/70 mt-1 text-sm">Continue your preparation. You're doing great!</p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap">
           <div className="flex items-center gap-2 px-4 py-2.5 bg-white/10 backdrop-blur-sm rounded-xl border border-white/10">
             <Flame className="w-5 h-5 text-orange-400" />
             <span className="text-sm font-bold">{homeData?.user?.streak || 0} Day Streak</span>

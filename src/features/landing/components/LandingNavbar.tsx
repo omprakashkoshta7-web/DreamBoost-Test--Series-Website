@@ -31,7 +31,7 @@ const LandingNavbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button onClick={() => navigate('/')}>
-            <BrandLogo logoClassName="h-16 w-[18rem] object-cover object-left" textClassName="hidden" />
+            <BrandLogo logoClassName="h-8 w-auto sm:h-10 md:h-12 lg:h-16 object-cover object-left" textClassName="hidden" />
           </button>
 
           {/* Desktop Nav */}

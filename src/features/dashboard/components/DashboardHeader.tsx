@@ -60,7 +60,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ name, avatar, targetE
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/10">
+        <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/10 flex-wrap">
           <button onClick={onExamChange} className="flex items-center gap-1.5 text-xs text-blue-200/80 hover:text-white transition-colors px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10">
             {targetExam ? `Target: ${targetExam}` : 'Set Target Exam'} <ChevronRight className="w-3 h-3" />
           </button>
