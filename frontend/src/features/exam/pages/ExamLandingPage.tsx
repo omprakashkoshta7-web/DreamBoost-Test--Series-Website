@@ -13,11 +13,19 @@ import EnrollModal from '@features/test-series/components/EnrollModal';
 import ExamLandingHeader from '@features/exam/components/ExamLandingHeader';
 import AvailableTestsHeader from '@features/exam/components/AvailableTestsHeader';
 
+const testTypeTabs = [
+  { key: '', label: 'All Tests' },
+  { key: 'subject', label: 'Subject Wise' },
+  { key: 'chapter', label: 'Chapter Wise' },
+  { key: 'full', label: 'Full Length' },
+];
+
 const ExamLandingPage: React.FC = () => {
   const { examSlug } = useParams<{ examSlug: string }>();
   const [searchParams] = useSearchParams();
   const selectedClass = searchParams.get('class') || '';
   const selectedSubCategory = searchParams.get('subCategory') || '';
+  const [selectedTestType, setSelectedTestType] = useState('');
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -76,8 +84,11 @@ const ExamLandingPage: React.FC = () => {
     if (selectedSubCategory) {
       result = result.filter((t: any) => !t.subCategory || t.subCategory === selectedSubCategory);
     }
+    if (selectedTestType) {
+      result = result.filter((t: any) => t.testType === selectedTestType);
+    }
     return result;
-  }, [currentExam, selectedClass, selectedSubCategory]);
+  }, [currentExam, selectedClass, selectedSubCategory, selectedTestType]);
 
   if (loading || !currentExam) {
     return <div className="flex items-center justify-center min-h-[60vh]"><Loader size="lg" label="Loading exam details..." /></div>;
@@ -93,28 +104,48 @@ const ExamLandingPage: React.FC = () => {
       <ExamLandingHeader name={pageTitle} description={pageDesc} onBack={() => navigate(-1)} />
 
       <div>
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
           <AvailableTestsHeader />
-          {selectedClass && (
+          <div className="flex items-center gap-2 flex-wrap">
+            {selectedClass && (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-500">Class:</span>
+                <div className="flex rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  {['11', '12'].map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => navigate(`/app/exam-landing/${examSlug}?class=${c}`, { replace: true })}
+                      className={`px-3 py-1 text-sm font-medium transition-colors ${
+                        selectedClass === c
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      }`}
+                    >
+                      Class {c}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-500">Class:</span>
+              <span className="text-sm text-gray-500">Type:</span>
               <div className="flex rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-                {['11', '12'].map((c) => (
+                {testTypeTabs.map((tab) => (
                   <button
-                    key={c}
-                    onClick={() => navigate(`/app/exam-landing/${examSlug}?class=${c}`, { replace: true })}
+                    key={tab.key}
+                    onClick={() => setSelectedTestType(tab.key)}
                     className={`px-3 py-1 text-sm font-medium transition-colors ${
-                      selectedClass === c
+                      selectedTestType === tab.key
                         ? 'bg-blue-600 text-white'
                         : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
                     }`}
                   >
-                    Class {c}
+                    {tab.label}
                   </button>
                 ))}
               </div>
             </div>
-          )}
+          </div>
         </div>
         {filteredTests.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -85,6 +85,7 @@ const TestFormModal: React.FC<TestFormModalProps> = ({ isOpen, onClose, editingT
             onChange={(e) => onFormChange({ ...form, subject: e.target.value })}
           />
         </div>
+        <Input label="Sub Category (optional)" value={form.subCategory} onChange={(e) => onFormChange({ ...form, subCategory: e.target.value })} placeholder="e.g. IBM test, TCS NQT" />
         <div className="rounded-xl border border-tb-gray-200 p-4 dark:border-gray-700">
           <p className="text-sm font-semibold text-tb-navy dark:text-white">Test Scope</p>
           <p className="mt-0.5 text-xs text-tb-gray-500 dark:text-gray-400">User side par isi basis par Subject Wise, Chapter Wise, Full Length sections banenge.</p>

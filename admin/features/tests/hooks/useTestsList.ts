@@ -10,6 +10,7 @@ const emptyForm: ITestForm = {
   description: '',
   category: '',
   subject: '',
+  subCategory: '',
   testType: 'subject',
   class: 'all',
   chapter: '',

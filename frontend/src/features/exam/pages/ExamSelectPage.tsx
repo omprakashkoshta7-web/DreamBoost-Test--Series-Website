@@ -24,8 +24,8 @@ const GroupedExamsSection: React.FC<{ exams: any[]; sections: any[]; onExamClick
     const sectionMap: Record<string, any[]> = {};
     const unassigned: any[] = [];
     exams.forEach((e) => {
-      const sid = e.sectionId;
-      if (sid && typeof sid === 'string') {
+      const sid = typeof e.sectionId === 'object' ? e.sectionId?._id : e.sectionId;
+      if (sid) {
         if (!sectionMap[sid]) sectionMap[sid] = [];
         sectionMap[sid].push(e);
       } else {
@@ -127,7 +127,7 @@ const ExamSelectPage: React.FC = () => {
 
       {categoryExams.length === 0 ? (
         <ExamEmptyState categoryName={category?.name || ''} />
-      ) : categorySlug === 'engineering' ? (
+      ) : sections && sections.length > 0 ? (
         <GroupedExamsSection exams={categoryExams} sections={sections} onExamClick={handleExamClick} />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
