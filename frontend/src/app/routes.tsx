@@ -3,7 +3,6 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import App from './App';
 import LandingPage from '@features/landing/pages/LandingPage';
 import ProtectedRoute from '@shared/components/ProtectedRoute';
-import { adminRoutes } from '@admin/routes/AdminRoutes';
 
 const LazyDashboard = lazy(() => import('@features/dashboard/pages/DashboardPage'));
 const LazyTestSeries = lazy(() => import('@features/test-series/pages/TestSeriesPage'));
@@ -71,6 +70,5 @@ export const router = createBrowserRouter([
       { path: '/app/study-progress', element: <ProtectedRoute><LazyStudyProgress /></ProtectedRoute> },
     ],
   },
-  ...adminRoutes,
   { path: '*', lazy: () => import('@shared/pages/NotFoundPage').then(m => ({ Component: m.default })) },
 ]);

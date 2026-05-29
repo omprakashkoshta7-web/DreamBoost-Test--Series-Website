@@ -9,11 +9,11 @@ export interface IAdminExam {
   totalTests: number;
   totalSubjects: number;
   difficulty: string;
+  group?: 'national' | 'state' | '';
   successStats: { label: string; value: string }[];
   bannerUrl: string;
   isActive: boolean;
   order: number;
-  examType?: 'national' | 'state' | 'competitive' | 'other';
   createdAt: string;
   updatedAt: string;
 }
@@ -29,7 +29,7 @@ export interface IAdminExamForm {
   difficulty: string;
   isActive: boolean;
   order: number;
-  examType?: 'national' | 'state' | 'competitive' | 'other';
+  group: 'national' | 'state' | '';
 }
 
 export interface IAdminExamsState {

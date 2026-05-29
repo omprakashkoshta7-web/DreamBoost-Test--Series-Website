@@ -10,7 +10,6 @@ import {
 import SearchBar from '@features/exam/components/SearchBar';
 import CategoryCard from '@features/exam/components/CategoryCard';
 import CategoryEmptyState from '@features/exam/components/CategoryEmptyState';
-import ExamCategoryHeader from '@features/exam/components/ExamCategoryHeader';
 
 const iconMap: Record<string, React.ComponentType<any>> = {
   BookOpen, Calculator, Atom, Scale, Stethoscope, Landmark, Gavel, BriefcaseBusiness,
@@ -52,8 +51,6 @@ const ExamCategoryPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <ExamCategoryHeader />
-
       <SearchBar value={searchQuery} onChange={setSearchQuery} />
 
       {filtered.length === 0 ? (
