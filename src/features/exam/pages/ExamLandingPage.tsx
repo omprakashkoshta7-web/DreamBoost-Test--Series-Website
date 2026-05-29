@@ -94,7 +94,7 @@ const ExamLandingPage: React.FC = () => {
 
       <div>
         <div className="flex items-center justify-between mb-4">
-          <AvailableTestsHeader count={filteredTests.length} />
+          <AvailableTestsHeader />
           {selectedClass && (
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500">Class:</span>

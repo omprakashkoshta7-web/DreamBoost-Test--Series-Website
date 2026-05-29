@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Layers, Zap, ChevronRight } from '@shared/icons';
+import { BookOpen, Zap, ChevronRight } from '@shared/icons';
 import DifficultyBadge from './DifficultyBadge';
 
 interface ExamCardProps {
@@ -26,9 +26,7 @@ const ExamCard: React.FC<ExamCardProps> = ({ exam, iconMap, onClick }) => {
             <div>
               <h3 className="font-semibold text-tb-navy group-hover:text-tb-blue transition-colors">{exam.name}</h3>
               <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-xs text-tb-gray-500 flex items-center gap-1">
-                  <Layers className="w-3 h-3" /> {exam.totalTests ?? exam.testCount ?? 0} tests
-                </span>
+
                 {exam.difficulty && <DifficultyBadge difficulty={exam.difficulty} />}
               </div>
             </div>
