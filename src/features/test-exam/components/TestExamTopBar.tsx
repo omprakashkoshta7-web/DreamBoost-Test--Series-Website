@@ -54,7 +54,17 @@ const TestExamTopBar: React.FC<TestExamTopBarProps> = ({
         <Button variant="primary" size="sm" onClick={onSubmit} className="min-h-[44px]"><Send className="w-4 h-4" /><span className="hidden sm:inline">Submit</span></Button>
       </div>
     </div>
-
+    {sections.length > 1 && (
+      <div className="flex gap-1 px-4 pb-3 overflow-x-auto">
+        {sections.map((section, idx) => (
+          <button key={section.name} onClick={() => onSectionChange(idx)}
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition-colors ${idx === sections.indexOf(currentSection || sections[0]) ? 'bg-tb-blue text-white' : 'bg-tb-gray-100 text-tb-gray-600 hover:bg-tb-gray-200'}`}>
+            {section.name}
+            <span className="ml-1 text-[10px] opacity-70">({section.questions.length})</span>
+          </button>
+        ))}
+      </div>
+    )}
   </div>
 );
 

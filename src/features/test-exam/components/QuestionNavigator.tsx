@@ -35,7 +35,7 @@ const QuestionNavigator: React.FC<QuestionNavigatorProps> = ({ totalQuestions, a
         <div className="flex items-center gap-2 p-2 bg-amber-50 rounded-lg"><div className="w-3 h-3 rounded-full bg-amber-500" /><span className="text-tb-gray-700">Flagged: {flagged.size}</span></div>
         <div className="flex items-center gap-2 p-2 bg-tb-gray-50 rounded-lg col-span-2"><div className="w-3 h-3 rounded-full bg-gray-300" /><span className="text-tb-gray-700">Remaining: {totalQuestions - Object.keys(answers).length}</span></div>
       </div>
-      {safeSections.length > 1 && (
+      {safeSections.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-3 border-b border-tb-gray-200 pb-2">
           {safeSections.map((section, idx) => (
             <button key={section.name} onClick={() => onSectionChange(idx)} className={`px-2 py-1 text-[10px] font-semibold rounded transition-colors ${idx === activeSectionIdx ? 'bg-tb-blue text-white' : 'bg-tb-gray-100 text-tb-gray-600 hover:bg-tb-gray-200'}`}>
