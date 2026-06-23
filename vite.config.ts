@@ -28,4 +28,18 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    target: 'es2020',
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+          redux: ['@reduxjs/toolkit', 'react-redux'],
+          icons: ['lucide-react'],
+        },
+      },
+    },
+  },
 })

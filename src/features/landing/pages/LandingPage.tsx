@@ -12,7 +12,7 @@ import { PopularTestsSection } from '../components/PopularTestsSection';
 import { PricingSection } from '../components/PricingSection';
 import { TestimonialsSection } from '../components/TestimonialsSection';
 import { useLandingContent } from '../hooks/useLandingContent';
-import ChatbotWidget from '@features/chatbot/components/ChatbotWidget';
+const ChatbotWidget = React.lazy(() => import('@features/chatbot/components/ChatbotWidget'));
 
 const LandingPage: React.FC = () => {
   const landing = useLandingContent();

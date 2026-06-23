@@ -6,7 +6,7 @@ import { selectAuthUser, selectIsAuthenticated } from '@features/auth/store/auth
 import NotificationPopover from '@shared/components/NotificationPopover';
 import BrandLogo from '@shared/components/BrandLogo';
 import { UserDropdown } from '@shared/components';
-import ChatbotWidget from '@features/chatbot/components/ChatbotWidget';
+const ChatbotWidget = React.lazy(() => import('@features/chatbot/components/ChatbotWidget'));
 import {
   Menu,
   X,

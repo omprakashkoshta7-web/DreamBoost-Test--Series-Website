@@ -6,3 +6,5 @@ dist/
 .env
 .env.local
 .eslintrc.cjs
+admin-standalone/
+server/
