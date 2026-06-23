@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { selectTests, selectTestLoading, selectTestError } from '../store/test.selectors';
+import { selectTests, selectTestLoading, selectTestError, selectTestPagination } from '../store/test.selectors';
 import { fetchTests as fetchTestsThunk } from '../store/test.thunks';
 
 export const useTestSeries = () => {
@@ -8,8 +8,9 @@ export const useTestSeries = () => {
   const tests = useAppSelector(selectTests);
   const loading = useAppSelector(selectTestLoading);
   const error = useAppSelector(selectTestError);
+  const pagination = useAppSelector(selectTestPagination);
 
-  const [filters, setFilters] = useState<{ category?: string; subject?: string; difficulty?: string; search?: string; page?: number; limit?: number }>({ page: 1, limit: 12 });
+  const [filters, setFilters] = useState<{ category?: string; subject?: string; difficulty?: string; search?: string; page?: number; limit?: number }>({ page: 1, limit: 500 });
   const filtersRef = useRef(filters);
   filtersRef.current = filters;
 
@@ -36,5 +37,5 @@ export const useTestSeries = () => {
     dispatch(fetchTestsThunk(filtersRef.current));
   }, [dispatch]);
 
-  return { tests, categories, filters, loading, error, setFilter, refresh };
+  return { tests, categories, filters, loading, error, pagination, setFilter, refresh };
 };

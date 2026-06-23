@@ -18,7 +18,7 @@ const LandingPage: React.FC = () => {
   const landing = useLandingContent();
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <SEO description="DreamBoost - India's #1 exam preparation platform with 500+ test series for SSC, Banking, Railway, JEE, NEET and more." />
       <LandingNavbar />
       <LandingHeroSection

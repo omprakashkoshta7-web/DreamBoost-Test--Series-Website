@@ -74,7 +74,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     : 'U';
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 dark:text-gray-100">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 dark:text-gray-100 overflow-x-hidden">
       {/* Top Navbar - Testbook Style */}
       <nav className="sticky top-0 z-50 bg-white shadow-tb border-b border-tb-gray-200/60">
         <div className="max-w-7xl mx-auto px-3 sm:px-5">
