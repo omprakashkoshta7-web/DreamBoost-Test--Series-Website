@@ -7,6 +7,7 @@ import LibraryItemCard from '@features/study-material/components/LibraryItemCard
 import LibraryEmptyState from '@features/study-material/components/LibraryEmptyState';
 import LibraryPagination from '@features/study-material/components/LibraryPagination';
 import { libraryTabs, useMyLibrary } from '../hooks/useStudyMaterial';
+import SEO from '@shared/components/SEO';
 
 const MyLibraryPage: React.FC = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const MyLibraryPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="My Library" noIndex />
       <PageHeader
         title="My Library"
         subtitle="Your saved, completed, and downloaded study materials"

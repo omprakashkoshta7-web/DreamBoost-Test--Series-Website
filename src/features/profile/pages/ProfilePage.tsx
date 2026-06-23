@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import SEO from '@shared/components/SEO';
 import { Card, Button, Badge, Input, Loader, PageHeader } from '@shared/components';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { getPurchases, getAchievements, getCertificates } from '../store/profile.thunks';
@@ -66,6 +67,7 @@ const ProfilePage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Profile" noIndex />
       <PageHeader title="My Profile" />
 
       <ProfileTabs tabs={tabs} activeTab={activeTab} onTabChange={(key) => setActiveTab(key as any)} />

@@ -7,6 +7,7 @@ import {
   Leaf, GraduationCap, School, Building2, TrainFront, Globe, Code, Heart,
   ArrowRight, Sparkles, Search, X,
 } from '@shared/icons';
+import SEO from '@shared/components/SEO';
 import SearchBar from '@features/exam/components/SearchBar';
 import CategoryCard from '@features/exam/components/CategoryCard';
 import CategoryEmptyState from '@features/exam/components/CategoryEmptyState';
@@ -51,6 +52,7 @@ const ExamCategoryPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="Exam Categories" description="Browse all exam categories including SSC, Banking, Railway, UPSC, Engineering, Medical and more on DreamBoost." />
       <SearchBar value={searchQuery} onChange={setSearchQuery} />
 
       {filtered.length === 0 ? (

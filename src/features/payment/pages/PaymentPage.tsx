@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import SEO from '@shared/components/SEO';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Shield } from '@shared/icons';
 import apiClient from '@shared/utils/apiClient';
@@ -55,6 +56,7 @@ const PaymentPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Payments" noIndex />
       <button onClick={() => navigate('/app/dashboard')} className="flex items-center gap-2 text-tb-gray-500 hover:text-tb-navy transition-colors">
         <ArrowLeft className="w-4 h-4" /><span className="text-sm font-medium">Back to Dashboard</span>
       </button>

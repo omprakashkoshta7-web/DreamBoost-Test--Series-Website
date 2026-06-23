@@ -10,6 +10,7 @@ import { FileText } from '@shared/icons';
 import { Loader } from '@shared/components';
 import TestCard from '@features/test-series/components/TestCard';
 import EnrollModal from '@features/test-series/components/EnrollModal';
+import SEO from '@shared/components/SEO';
 import ExamLandingHeader from '@features/exam/components/ExamLandingHeader';
 import AvailableTestsHeader from '@features/exam/components/AvailableTestsHeader';
 
@@ -101,6 +102,7 @@ const ExamLandingPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO noIndex />
       <ExamLandingHeader name={pageTitle} description={pageDesc} onBack={() => navigate(-1)} />
 
       <div>

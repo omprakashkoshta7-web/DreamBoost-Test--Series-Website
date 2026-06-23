@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { Loader, Button, Card, Badge } from '@shared/components';
 import { useNavigate } from 'react-router-dom';
 import { useBookmarks } from '../hooks';
@@ -25,6 +26,7 @@ const BookmarksPage: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      <SEO title="Bookmarked Questions" noIndex />
       <BackToDashboardButton />
 
       <BookmarkHeader count={bookmarks.length} />

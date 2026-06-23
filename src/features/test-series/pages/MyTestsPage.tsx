@@ -5,6 +5,7 @@ import { Loader } from '@shared/components';
 import MyTestCard from '@features/test-series/components/MyTestCard';
 import MyTestsEmptyState from '@features/test-series/components/MyTestsEmptyState';
 import MyTestsHeader from '@features/test-series/components/MyTestsHeader';
+import SEO from '@shared/components/SEO';
 
 const MyTestsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const MyTestsPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="My Tests" noIndex />
       <MyTestsHeader onBack={() => navigate(-1)} testCount={tests.length} />
 
       {tests.length === 0 ? (

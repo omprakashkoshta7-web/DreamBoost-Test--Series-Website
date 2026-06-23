@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { updateProfile, changePassword } from '@features/profile/store/profile.thunks';
 import { selectProfile } from '@features/profile/store/profile.selectors';
@@ -78,6 +79,7 @@ const SettingsPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Settings" noIndex />
       <PageHeader title="Settings" />
 
       <SettingsToast message={message} />

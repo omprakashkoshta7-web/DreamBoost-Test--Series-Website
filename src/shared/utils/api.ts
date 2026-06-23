@@ -1,4 +1,4 @@
-const API_ORIGIN = (import.meta.env.VITE_API_URL || 'https://backkend-testseries.onrender.com').replace(/\/+$/, '');
+const API_ORIGIN = (import.meta.env.VITE_API_URL || 'https://backend-microservices-testseries.onrender.com').replace(/\/+$/, '');
 
 export const API_BASE_URL = API_ORIGIN.endsWith('/api') ? API_ORIGIN : `${API_ORIGIN}/api`;
 

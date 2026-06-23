@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '@shared/components/SEO';
 import { Alert, Button, Tabs } from '@shared/components';
 import { HelpCircle, Mail, MessageSquare, Plus } from '@shared/icons';
 import SupportPageHeader from '@features/support/components/SupportPageHeader';
@@ -19,6 +20,7 @@ const SupportPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Help &amp; Support" noIndex />
       <SupportPageHeader />
 
       <Tabs tabs={tabs} activeTab={support.activeTab} onChange={(key) => support.setActiveTab(key as SupportTabKey)} variant="pills" />

@@ -9,6 +9,7 @@ import StudyMaterialHeader from '@features/study-material/components/StudyMateri
 import RecommendedSectionHeader from '@features/study-material/components/RecommendedSectionHeader';
 import MaterialEmptyState from '@features/study-material/components/MaterialEmptyState';
 import { studyMaterialCategoryChips, useStudyMaterialPage } from '../hooks/useStudyMaterial';
+import SEO from '@shared/components/SEO';
 
 const StudyMaterialPage: React.FC = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const StudyMaterialPage: React.FC = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
+      <SEO title="Study Material" noIndex />
       <StudyMaterialHeader />
 
       <div className="max-w-xl">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import SEO from '@shared/components/SEO';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Alert } from '@shared/components';
 import BrandLogo from '@shared/components/BrandLogo';
@@ -44,6 +45,7 @@ const GithubCallbackPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+      <SEO title="Signing in..." noIndex />
       <div className="w-full max-w-md bg-white border border-tb-gray-200 rounded-2xl shadow-xl p-8 text-center">
         <BrandLogo className="flex items-center justify-center gap-1.5 mb-6" logoClassName="h-12 w-16" textClassName="text-lg font-bold bg-gradient-to-r from-tb-blue to-blue-700 bg-clip-text text-transparent" />
         {error ? (

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useExam } from '../hooks';
 import { Loader, Badge } from '@shared/components';
+import SEO from '@shared/components/SEO';
 import { ArrowLeft, Search, Zap, Layers, BookOpen, Star, TrendingUp, Clock, Filter, Sliders, ChevronDown } from '@shared/icons';
 
 type TabKey = 'full' | 'subject' | 'chapter';
@@ -110,6 +111,7 @@ const TestSeriesPage: React.FC = () => {
 
   return (
     <div className="space-y-5 animate-fade-in">
+      <SEO title="Test Series" description="Browse and practice with DreamBoost test series for competitive exams." />
       <div className="flex items-center gap-3">
         <button onClick={() => navigate(-1)} className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 transition-colors">
           <ArrowLeft className="w-5 h-5" />

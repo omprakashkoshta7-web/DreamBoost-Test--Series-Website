@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { fetchUserRank } from '../store/leaderboard.thunks';
 import { selectUserRank } from '../store/leaderboard.selectors';
@@ -30,6 +31,7 @@ const LeaderboardPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Leaderboard" noIndex />
       <LeaderboardHeader userRankData={userRankData} />
 
       <TimeFilterBar selected={timeFilter || 'weekly'} onChange={setTimeFilter} />

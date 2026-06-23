@@ -8,6 +8,7 @@ import RecentActivityList from '@features/study-material/components/RecentActivi
 import ProgressEmptyState from '@features/study-material/components/ProgressEmptyState';
 import { TrendingUp } from '@shared/icons';
 import { useStudyProgress } from '../hooks/useStudyMaterial';
+import SEO from '@shared/components/SEO';
 
 const StudyProgressPage: React.FC = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const StudyProgressPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in max-w-4xl mx-auto">
+      <SEO title="Study Progress" noIndex />
       <PageHeader
         title="My Study Progress"
         subtitle="Track your learning journey and improve weak areas"

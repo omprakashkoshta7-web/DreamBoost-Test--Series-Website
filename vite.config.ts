@@ -23,7 +23,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'https://backkend-testseries.onrender.com',
+        target: 'https://backend-microservices-testseries.onrender.com',
         changeOrigin: true,
       },
     },

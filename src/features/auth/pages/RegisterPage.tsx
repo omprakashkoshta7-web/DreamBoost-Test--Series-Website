@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '@shared/components/SEO';
 import { Button, Input, Alert } from '@shared/components';
 import BrandLogo from '@shared/components/BrandLogo';
 import { useRegisterForm } from '../hooks';
@@ -18,6 +19,7 @@ const RegisterPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950 flex">
+      <SEO title="Sign Up" description="Create your free DreamBoost account and start preparing for SSC, Banking, Railway, JEE, NEET and other competitive exams." />
       <AuthBrandingSidebarRegister />
 
       {/* Right Side - Form */}

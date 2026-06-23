@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useExam } from '../hooks';
 import { Loader } from '@shared/components';
+import SEO from '@shared/components/SEO';
 import { ArrowLeft, Clock, HelpCircle, ChevronRight } from '@shared/icons';
 
 const TestListPage: React.FC = () => {
@@ -63,6 +64,7 @@ const TestListPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="Tests" noIndex />
       <button onClick={() => navigate(-1)} className="inline-flex items-center gap-1.5 text-sm text-tb-gray-500 hover:text-tb-blue transition-colors">
         <ArrowLeft className="w-4 h-4" /> Back
       </button>

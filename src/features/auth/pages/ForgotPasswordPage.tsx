@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '@shared/components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { Button, Input, Alert } from '@shared/components';
 import BrandLogo from '@shared/components/BrandLogo';
@@ -25,6 +26,7 @@ const ForgotPasswordPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950 flex items-center justify-center px-4 py-12">
+      <SEO title="Forgot Password" description="Reset your DreamBoost account password." />
       <div className="w-full max-w-md">
         <Button variant="ghost" size="sm" onClick={() => navigate('/?auth=login')} className="mb-8">
           <ArrowLeft className="w-4 h-4" /> Back to login

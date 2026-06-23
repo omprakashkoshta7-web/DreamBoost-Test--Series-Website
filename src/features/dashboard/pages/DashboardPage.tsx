@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { useDashboard, useDashboardActions } from '../hooks';
 import { fetchDashboardStats } from '../store/dashboard.thunks';
 import DashboardSkeleton from '../components/DashboardSkeleton';
@@ -30,6 +31,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div className="space-y-5 sm:space-y-6">
+      <SEO title="Dashboard" noIndex />
       {/* 1. Header */}
       <DashboardHeader
         name={header.name} avatar={header.avatar} targetExam={header.targetExam}

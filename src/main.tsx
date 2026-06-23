@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ReduxProvider, AuthProvider, ThemeProvider, QueryProvider } from '@app/providers';
 import { router } from '@app/routes';
 import { Loader } from '@shared/components';
@@ -8,6 +9,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <HelmetProvider>
     <ReduxProvider>
       <AuthProvider>
         <ThemeProvider>
@@ -23,5 +25,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </ThemeProvider>
       </AuthProvider>
     </ReduxProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );

@@ -8,6 +8,7 @@ import MaterialItemCard from '@features/study-material/components/MaterialItemCa
 import MaterialsEmptyState from '@features/study-material/components/MaterialsEmptyState';
 import SectionHeader from '@features/study-material/components/SectionHeader';
 import { useSubjectDetail } from '../hooks/useStudyMaterial';
+import SEO from '@shared/components/SEO';
 
 const SubjectDetailPage: React.FC = () => {
   const { subjectId } = useParams<{ subjectId: string }>();
@@ -24,6 +25,7 @@ const SubjectDetailPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="Study Subjects" noIndex />
       <SubjectDetailHeader name={subject.name} description={subject.description} materialCount={subject.materialCount} onBack={() => navigate('/app/study-material')} />
 
       {chapters.length > 0 && (

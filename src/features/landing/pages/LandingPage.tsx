@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '@shared/components/SEO';
 import AuthModal from '@features/auth/components/AuthModal';
 import LandingNavbar from '../components/LandingNavbar';
 import { ExamCategoriesSection } from '../components/ExamCategoriesSection';
@@ -18,6 +19,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
+      <SEO description="DreamBoost - India's #1 exam preparation platform with 500+ test series for SSC, Banking, Railway, JEE, NEET and more." />
       <LandingNavbar />
       <LandingHeroSection
         heroLoaded={landing.heroLoaded}

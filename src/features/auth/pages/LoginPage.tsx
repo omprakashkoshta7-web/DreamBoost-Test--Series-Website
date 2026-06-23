@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '@shared/components/SEO';
 import { Button, Input, Alert } from '@shared/components';
 import BrandLogo from '@shared/components/BrandLogo';
 import { useLoginForm } from '../hooks';
@@ -13,6 +14,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-950 dark:via-gray-900 dark:to-blue-950 flex">
+      <SEO title="Login" description="Login to your DreamBoost account to access test series, track progress and continue your exam preparation." />
       <AuthBrandingSidebar />
 
       {/* Right Side - Form */}

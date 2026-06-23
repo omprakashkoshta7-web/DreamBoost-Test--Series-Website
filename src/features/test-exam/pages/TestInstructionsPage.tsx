@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Loader, Button } from '@shared/components';
 import LockedTestCard from '@features/test-exam/components/LockedTestCard';
 import { useTestExam } from '@features/test-exam/hooks/useTestExam';
+import SEO from '@shared/components/SEO';
 
 const TestInstructionsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const TestInstructionsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO title="Test Instructions" noIndex />
       <div className="mx-auto max-w-2xl px-6 py-10">
         <div className="mb-10">
           <p className="text-sm font-medium text-gray-500">{currentTest.category}</p>

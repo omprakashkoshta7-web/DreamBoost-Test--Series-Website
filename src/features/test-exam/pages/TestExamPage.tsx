@@ -16,6 +16,7 @@ import { useTestTimer } from '@features/test-exam/hooks/useTestTimer';
 import { useTestFullscreen } from '@features/test-exam/hooks/useTestFullscreen';
 import { useTestTabSwitch } from '@features/test-exam/hooks/useTestTabSwitch';
 import { useTestAutosave } from '@features/test-exam/hooks/useTestAutosave';
+import SEO from '@shared/components/SEO';
 
 interface Section {
   name: string;
@@ -176,6 +177,7 @@ const TestExamPage: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col">
+      <SEO title="Exam in Progress" noIndex />
       <TabSwitchWarning tabWarning={tabWarning} tabSwitchCount={tabSwitchCount} maxTabSwitches={maxTabSwitches} onDismiss={() => setTabWarning(false)} />
 
       <FullscreenWarning fullscreenWarning={fullscreenWarning} onEnterFullscreen={enterFullscreen} />

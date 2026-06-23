@@ -13,6 +13,7 @@ import MaterialTabs from '../components/MaterialTabs';
 import OverviewTab from '../components/OverviewTab';
 import ResourcesTab from '../components/ResourcesTab';
 import { useMaterialDetail } from '../hooks';
+import SEO from '@shared/components/SEO';
 
 type TabType = 'overview' | 'content' | 'resources';
 const PDF_DOWNLOAD_PRICE = 39;
@@ -111,6 +112,7 @@ const MaterialViewPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in max-w-4xl mx-auto">
+      <SEO title="Study Material" noIndex />
       <div className="flex items-center justify-between">
         <Button variant="ghost" size="sm" onClick={() => navigate(-1)}><ArrowLeft className="w-4 h-4" /> Back</Button>
         <div className="flex items-center gap-2">

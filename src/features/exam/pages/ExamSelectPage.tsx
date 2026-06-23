@@ -10,6 +10,7 @@ import {
 import ExamCard from '@features/exam/components/ExamCard';
 import ExamSelectHeader from '@features/exam/components/ExamSelectHeader';
 import ExamEmptyState from '@features/exam/components/ExamEmptyState';
+import SEO from '@shared/components/SEO';
 import SubCategorySelectionModal from '@features/exam/components/SubCategorySelectionModal';
 
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -110,6 +111,7 @@ const ExamSelectPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO noIndex />
       {categorySlug === 'engineering' ? (
         <button onClick={() => navigate('/app/exam-categories')} className="inline-flex items-center gap-1.5 text-sm text-tb-gray-500 hover:text-tb-blue transition-colors mb-2">
           <ArrowLeft className="w-4 h-4" /> Back to Categories

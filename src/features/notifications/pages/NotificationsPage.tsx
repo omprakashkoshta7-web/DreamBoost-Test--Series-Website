@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { Card, Badge, Button, Loader } from '@shared/components';
 import { useAppDispatch } from '@store/hooks';
 import { markAllAsRead, deleteNotification } from '../store/notification.thunks';
@@ -45,6 +46,7 @@ const NotificationPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
+      <SEO title="Notifications" noIndex />
       <NotificationHeader unreadCount={unreadCount} onMarkAllRead={() => dispatch(markAllAsRead())} />
 
       {notifications.length > 0 ? (

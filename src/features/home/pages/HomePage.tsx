@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '@shared/components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { Loader } from '@shared/components';
 import {
@@ -40,6 +41,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="space-y-8 pb-8">
+      <SEO title="Home" noIndex />
       <WelcomeBanner homeData={content} />
       <QuickActionButtons onNavigate={navigate} />
       <TopCategoriesSection categories={content?.categories} onNavigate={navigate} />

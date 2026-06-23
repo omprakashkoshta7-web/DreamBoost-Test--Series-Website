@@ -15,6 +15,7 @@ import StreakPopupModal from '@features/test-result/components/StreakPopupModal'
 import PremiumUpsellModal from '@features/test-result/components/PremiumUpsellModal';
 import QuestionReviewItem from '@features/test-result/components/QuestionReviewItem';
 import TopicAnalysisItem from '@features/test-result/components/TopicAnalysisItem';
+import SEO from '@shared/components/SEO';
 
 type SectionRow = {
   section: string;
@@ -223,6 +224,7 @@ const TestResultPage: React.FC = () => {
 
   return (
     <div className="mx-auto max-w-[1560px] space-y-6 px-4 py-4 sm:px-6 sm:py-5 lg:px-8">
+      <SEO title="Test Result" noIndex />
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1 className="text-[28px] font-bold leading-none text-slate-900 sm:text-[32px]">Result Summary</h1>

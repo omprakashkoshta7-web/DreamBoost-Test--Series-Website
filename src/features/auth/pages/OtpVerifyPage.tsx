@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import SEO from '@shared/components/SEO';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button, Alert } from '@shared/components';
 import BrandLogo from '@shared/components/BrandLogo';
@@ -68,6 +69,7 @@ const OtpVerifyPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4 py-12">
+      <SEO title="Verify Email" noIndex />
       <div className="w-full max-w-md">
         <button
           onClick={() => navigate('/app/auth/register')}

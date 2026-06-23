@@ -11,6 +11,7 @@ import TestCard from '../components/TestCard';
 import TestEmptyState from '../components/TestEmptyState';
 import ProTipCard from '../components/ProTipCard';
 import EnrollModal from '../components/EnrollModal';
+import SEO from '@shared/components/SEO';
 
 const TestSeriesPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -50,6 +51,7 @@ const TestSeriesPage: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
+      <SEO title="Test Series" noIndex />
       <HeroSection />
       <SearchFilterBar searchQuery={searchQuery} onSearchChange={setSearchQuery} categories={categories} selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} resultCount={filteredTests.length} />
       {filteredTests.length > 0 ? (

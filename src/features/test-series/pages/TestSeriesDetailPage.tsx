@@ -6,6 +6,7 @@ import { useExam } from '@features/exam/hooks';
 import { enrollTest, fetchMyEnrollments } from '../services/api';
 import EnrollModal from '../components/EnrollModal';
 import { useToast } from '@shared/components/ToastProvider';
+import SEO from '@shared/components/SEO';
 
 type SectionKey = 'subject' | 'chapter' | 'full';
 
@@ -138,6 +139,7 @@ const TestSeriesDetailPage: React.FC = () => {
 
   return (
     <div className="animate-fade-in px-1 py-3 sm:px-4 sm:py-6">
+      <SEO title="Test Series Detail" noIndex />
       <div className="mx-auto max-w-6xl space-y-5">
         <button
           onClick={() => navigate(`/app/exam-landing/${examSlug}`)}
