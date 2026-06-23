@@ -28,10 +28,10 @@ const LandingNavbar: React.FC = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-tb-gray-200/50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button onClick={() => navigate('/')}>
-            <BrandLogo logoClassName="h-14 w-auto sm:h-16 md:h-20 lg:h-24 object-contain object-left" textClassName="hidden" />
+            <BrandLogo logoClassName="h-8 w-auto sm:h-10 md:h-12 lg:h-16 object-cover object-left" textClassName="hidden" />
           </button>
 
           {/* Desktop Nav */}
